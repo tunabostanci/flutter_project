@@ -31,7 +31,7 @@ flutter run
 🔗 Kullanılan Teknolojiler
 Flutter – UI oluşturmak için
 
-Firebase Firestore – Verileri saklamak için
+  Firebase Firestore – Verileri saklamak için
 
 📜 Lisans
 Bu proje MIT Lisansı ile lisanslanmıştır.
