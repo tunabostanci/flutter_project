@@ -36,4 +36,5 @@ Firebase Firestore – Verileri saklamak için
 Bu proje MIT Lisansı ile lisanslanmıştır.
 
 📩 Soruların mı var? Bana ulaşabilirsin! 🚀
+tunabostanci2005@gmail.com
 
