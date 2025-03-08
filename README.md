@@ -1,16 +1,40 @@
-# freecodecamp
+# 📝 Flutter Firestore Notes App  
 
-A new Flutter project.
+Basit ama güçlü bir **not alma uygulaması**! 
+Notlarını yaz, düzenle ve Firestore ile güvenle sakla.  
 
-## Getting Started
+## 🔥 Özellikler  
+- ✅ **Hızlı ve kolay kullanım** – Notlarını anında ekleyip düzenleyebilirsin.  
+- ☁️ **Gerçek zamanlı Firestore senkronizasyonu** – Tüm verilerin bulutta güvende.  
+- 🎨 **Modern ve kullanıcı dostu tasarım** – Şık bir arayüz ile notlarını yönet.  
+- 📲 **Çoklu platform desteği** – Android ve iOS'ta sorunsuz çalışır.  
 
-This project is a starting point for a Flutter application.
+## 🚀 Kurulum  
 
-A few resources to get you started if this is your first Flutter project:
+Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsin:  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 1️⃣ Depoyu Klonla ve Bağımlılıkları Yükle  
+```bash
+git clone https://github.com/tunabostanci/flutter_project.git
+cd flutter_project
+flutter pub get
+```
+### 2️⃣ Firebase Yapılandırması
+Firebase projesi oluştur ve Firestore’u etkinleştir.
+google-services.json (Android) ve GoogleService-Info.plist (iOS) dosyalarını uygun dizinlere ekle.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 3️⃣ Uygulamayı Çalıştır
+```bash
+Kopyala
+Düzenle
+flutter run
+```
+🔗 Kullanılan Teknolojiler
+Flutter – UI oluşturmak için
+Firebase Firestore – Verileri saklamak için
+
+📜 Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır.
+
+📩 Soruların mı var? Bana ulaşabilirsin! 🚀
+
