@@ -30,6 +30,7 @@ flutter run
 ```
 🔗 Kullanılan Teknolojiler
 Flutter – UI oluşturmak için
+
 Firebase Firestore – Verileri saklamak için
 
 📜 Lisans
