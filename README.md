@@ -18,6 +18,7 @@ Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsin:
 git clone https://github.com/tunabostanci/flutter_project.git
 cd flutter_project
 flutter pub get
+flutter run
 ```
 ### 2️⃣ Firebase Yapılandırması
 Firebase projesi oluştur ve Firestore’u etkinleştir.
