@@ -25,8 +25,6 @@ google-services.json (Android) ve GoogleService-Info.plist (iOS) dosyalarını u
 
 ### 3️⃣ Uygulamayı Çalıştır
 ```bash
-Kopyala
-Düzenle
 flutter run
 ```
 🔗 Kullanılan Teknolojiler
