@@ -1,16 +1,13 @@
-# freecodecamp
+# My flutter tutorial
 
 A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for my career in Mobile App Development.
 
-A few resources to get you started if this is your first Flutter project:
+-I have learned lots of things
+-I am not eager to pursue a career in Mobile App Dev.
+-This is an attempt in my journey of finding my fields of interest
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tuna Bostanci.
