@@ -1,3 +1,6 @@
 *.exe filter=lfs diff=lfs merge=lfs -text
 Firebase/firebase-tools-instant-win.exe filter=lfs diff=lfs merge=lfs -text
 firebase-tools-instant-win.exe filter=lfs diff=lfs merge=lfs -text
+*.dart linguist-detectable
+*.dart linguist-language=Dart
+*.yaml linguist-detectable
