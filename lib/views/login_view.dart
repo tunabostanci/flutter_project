@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:freecodecamp/constants/routes.dart';
-import 'package:freecodecamp/services/auth/bloc/auth_event.dart';
+import 'package:freecodecamp/utilities/dialogs/loading_dialog.dart';
+import '../services/auth/bloc/auth_event.dart';
 import '../services/auth/auth_exceptions.dart';
 import '../services/auth/bloc/auth_bloc.dart';
+import '../services/auth/bloc/auth_state.dart';
 import '../utilities/dialogs/error_dialog.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bloc/bloc.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -17,6 +17,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  CloseDialog? _closeDialogHandle;
 
   @override
   void initState() {
@@ -34,71 +35,90 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Login',
-          style: TextStyle(
-            color: Colors.white,
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) async {
+        print('Current state: $state');
+        final closeDialog = _closeDialogHandle;
+        if (state is AuthStateLoggedOut) {
+
+          if (state.isLoading && closeDialog != null) {
+            closeDialog();
+            _closeDialogHandle = null;
+          } else if (state.isLoading && closeDialog == null) {
+            _closeDialogHandle = showLoadingDialog(
+              context: context,
+              text: 'Loading...',
+            );
+          }
+
+
+          if (state.exception != null) {
+            print('AuthStateLoggedOut with exception: ${state.exception}');
+            String errorMessage = 'Authentication error';
+            if (state.exception is UserNotFoundAuthException) {
+              errorMessage = 'User not found';
+            } else if (state.exception is WrongPasswordAuthException) {
+              errorMessage = 'Wrong credentials';
+            } else if (state.exception is GenericAuthException) {
+              errorMessage = 'Authentication error';
+            }
+            print('Showing error dialog: $errorMessage');
+            await showErrorDialog(context, errorMessage);
+          }
+
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Login',
+            style: TextStyle(
+              color: Colors.white,
+            ),
           ),
+          backgroundColor: Colors.blue,
         ),
-        backgroundColor: Colors.blue,
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: _email,
-            enableSuggestions: false,
-            autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(hintText: 'Enter your email here'),
-          ),
-          TextField(
-            controller: _password,
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            decoration:
-                const InputDecoration(hintText: 'Enter your password here'),
-          ),
-          TextButton(
+        body: Column(
+          children: [
+            TextField(
+              controller: _email,
+              enableSuggestions: false,
+              autocorrect: false,
+              keyboardType: TextInputType.emailAddress,
+              decoration:
+                  const InputDecoration(hintText: 'Enter your email here'),
+            ),
+            TextField(
+              controller: _password,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              decoration:
+                  const InputDecoration(hintText: 'Enter your password here'),
+            ),
+            TextButton(
               onPressed: () async {
                 final email = _email.text;
                 final password = _password.text;
-                try {
-                  context.read<AuthBloc>().add(
-                        AuthEventLogIn(
-                          email,
-                          password,
-                        ),
-                      );
-                } on UserNotFoundAuthException {
-                  await showErrorDialog(
-                    context,
-                    'User not found!',
-                  );
-                } on WrongPasswordAuthException {
-                  await showErrorDialog(
-                    context,
-                    'Wrong credentials',
-                  );
-                } on GenericAuthException {
-                  await showErrorDialog(
-                    context,
-                    'Authentication error',
-                  );
-                }
+                context.read<AuthBloc>().add(
+                      AuthEventLogIn(
+                        email,
+                        password,
+                      ),
+                    );
               },
-              child: const Text('Login')),
-          TextButton(
+              child: const Text('Login'),
+            ),
+            TextButton(
               onPressed: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  registerRoute,
-                  (route) => false,
-                );
+               context.read<AuthBloc>().add(
+                 const AuthEventShouldRegister(),
+               );
               },
-              child: const Text("Not registered yet? Register here!"))
-        ],
+              child: const Text("Not registered yet? Register here!"),
+            ),
+          ],
+        ),
       ),
     );
   }
