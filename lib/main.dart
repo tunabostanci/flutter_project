@@ -5,6 +5,7 @@ import 'package:freecodecamp/services/auth/bloc/auth_bloc.dart';
 import 'package:freecodecamp/services/auth/bloc/auth_event.dart';
 import 'package:freecodecamp/services/auth/bloc/auth_state.dart';
 import 'package:freecodecamp/services/auth/firebase_auth_provider.dart';
+import 'package:freecodecamp/views/forgot_password_view.dart';
 import 'package:freecodecamp/views/login_view.dart';
 import 'package:freecodecamp/views/notes/create_update_note_view.dart';
 import 'package:freecodecamp/views/register_view.dart';
@@ -56,6 +57,8 @@ class HomePage extends StatelessWidget {
           return const VerifyEmailView();
         } else if (state is AuthStateLoggedOut) {
           return const LoginView();
+        } else if (state is AuthStateForgotPassword){
+          return const ForgotPasswordView();
         } else if (state is AuthStateRegistering) {
           return const RegisterView();
         } else {

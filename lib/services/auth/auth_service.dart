@@ -21,7 +21,6 @@ class AuthService implements AuthProvider1 {
       );
 
   @override
-  // TODO: implement currentUser
   AuthUser? get currentUser => provider.currentUser;
 
   @override
@@ -42,4 +41,8 @@ class AuthService implements AuthProvider1 {
 
   @override
   Future<void> initialize() => provider.initialize();
+
+  @override
+  Future<void> sendPasswordReset({required String toEmail}) =>
+      provider.sendPasswordReset(toEmail: toEmail);
 }
